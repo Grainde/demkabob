@@ -19,7 +19,7 @@ ip route 0.0.0.0/0 172.16.1.1
 interface tunnel.1
 ip address 10.10.10.1/30
 ip tunnel 172.16.1.2 172.16.2.2 mode gre
-(Аутентификация OSPF внутри GRE туннеля)
+# Аутентификация OSPF внутри GRE туннеля
 ip ospf authentication message-digest
 ip ospf message-digest-key 1 md5 P@ssw0rd
 exit (выход)
