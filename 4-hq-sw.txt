@@ -4,3 +4,7 @@ hostnamectl set-hostname hq-sw.au-team.irpo
 mcedit /etc/sysconfig/network
   
 HOSTNAME=hq-sw.au-team.irpo
+
+
+
+ovs-vsctl show      <- информацию оттуда возможно надо занести в отчёт
