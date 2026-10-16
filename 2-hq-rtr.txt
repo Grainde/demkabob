@@ -18,8 +18,10 @@ ip route 0.0.0.0/0 172.16.1.1
 # GRE туннель между hq-rtr и br-rtr
 interface tunnel.1
 ip address 10.10.10.1/30
-ip mtu 1400 (необязательно)
 ip tunnel 172.16.1.2 172.16.2.2 mode gre
+(Аутентификация OSPF внутри GRE туннеля)
+ip ospf authentication message-digest
+ip ospf message-digest-key 1 md5 P@ssw0rd
 exit (выход)
 
 # OSPF маршрутизация
@@ -30,13 +32,7 @@ network 10.10.100.0/27 area 0
 network 10.10.200.0/28 area 0
 network 10.10.30.0/29 area 0
 passive-interface default
-no passive-interface tunnel.0
-exit
-
-# Аутентификация по GRE(OSPF)
-interface tunnel.1
-ip ospf authentication message-digest
-ip ospf message-digest-key 1 md5 P@ssw0rd
+no passive-interface tunnel.1
 exit
 
 # Донастройка NAT
