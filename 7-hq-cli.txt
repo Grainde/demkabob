@@ -4,6 +4,7 @@
 
 
 # ---------- 1. Имя хоста ----------
+su -
 hostnamectl set-hostname hq-cli.au-team.irpo
 exec bash
 
