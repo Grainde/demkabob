@@ -1,4 +1,11 @@
 hostnamectl set-hostname isp
+
+mcedit /etc/sysconfig/network
+# vvvvvvvvvv В MCEDIT (вписываем в файл) vvvvvvvvvv
+HOSTNAME=isp.au-team.irpo
+# если строка HOSTNAME= уже есть - исправить, если нет - добавить
+# ^^^^^^^^^^ КОНЕЦ MCEDIT: F2 сохранить, F10 выйти ^^^^^^^^^^
+
 timedatectl set-timezone Europe/Moscow
 exec bash (применить изменение имени)
 
@@ -11,7 +18,7 @@ iptables -t nat -A POSTROUTING -s 172.16.2.0/28 -o ens3 -j MASQUERADE
 # Сохранить iptables
 iptables-save > /etc/sysconfig/iptables
 # запустить iptables
-systemctl start --now iptables.service
+systemctl enable --now iptables.service
 
 # доп проверка ISP (Времязатратно)
 hostname
