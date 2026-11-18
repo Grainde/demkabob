@@ -41,13 +41,6 @@ ip ospf message-digest-key 1 md5 P@ssw0rd
 exit
 
 # Донастройка NAT
-ip nat pool VLAN10 10.20.20.1-10.20.20.14
-ip nat pool VLAN20 10.20.30.1-10.20.30.6
-ip nat pool RTR-FW 10.20.10.1-10.20.10.2 (если есть FW на топологии)
-
-ip nat source dynamic inside-to-outside pool VLAN10 overload interface isp
-ip nat source dynamic inside-to-outside pool VLAN20 overload interface isp
-ip nat source dynamic inside-to-outside pool RTR-FW overload interface isp <- Название возможно зависит от варианта в задании
 
 interface isp
 ip nat outside
@@ -56,6 +49,14 @@ exit
 interface fw
 ip nat inside
 exit
+
+ip nat pool VLAN10 10.20.20.1-10.20.20.14
+ip nat pool VLAN20 10.20.30.1-10.20.30.6
+ip nat pool RTR-FW 10.20.10.1-10.20.10.2 (если есть FW на топологии)
+
+ip nat source dynamic inside-to-outside pool VLAN10 overload interface isp
+ip nat source dynamic inside-to-outside pool VLAN20 overload interface isp
+ip nat source dynamic inside-to-outside pool RTR-FW overload interface isp <- Название возможно зависит от варианта в задании
 
 ### НЕ ЗАБУДЬТЕ СОХРАНИТЬ ВСЕ В ПАМЯТЬ РОУТЕРА ИНАЧЕ ВАМ ПИЗДА!!! ###
 end
