@@ -18,7 +18,7 @@ iptables -t nat -A POSTROUTING -s 172.16.2.0/28 -o ens3 -j MASQUERADE
 # Сохранить iptables
 iptables-save > /etc/sysconfig/iptables
 # запустить iptables
-systemctl start --now iptables.service
+systemctl enable --now iptables.service
 
 # доп проверка ISP (Времязатратно)
 hostname
